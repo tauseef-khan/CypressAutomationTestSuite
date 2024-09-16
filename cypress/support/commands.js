@@ -23,3 +23,23 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('fillCheckoutForm', (firstName, lastName, email, street, city, postcode) => {
+    const firstNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(1)'
+    cy.get(firstNameTextField).type(firstName) 
+
+    const lastNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(2)'
+    cy.get(lastNameTextField).type(lastName)
+
+    const emailTextField = 'body > div > astro-island > div > div > form > input:nth-child(3)'
+    cy.get(emailTextField).type(email)
+
+    const streetTextField = 'body > div > astro-island > div > div > form > input:nth-child(4)'
+    cy.get(streetTextField).type(street)
+
+    const cityTextField = 'body > div > astro-island > div > div > form > input:nth-child(5)'
+    cy.get(cityTextField).type(city)
+
+    const postcodeTextField = 'body > div > astro-island > div > div > form > input:nth-child(6)'
+    cy.get(postcodeTextField).type(postcode)
+})

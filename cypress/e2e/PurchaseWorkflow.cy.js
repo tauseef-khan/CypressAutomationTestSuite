@@ -19,23 +19,7 @@ describe('Purchasing donut(s)', () => {
     const checkoutButton = 'body > div > astro-island > div > div > a'
     cy.get(checkoutButton).click()
 
-    const firstNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(1)'
-    cy.get(firstNameTextField).type('John') 
-
-    const lastNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(2)'
-    cy.get(lastNameTextField).type('Doe')
-
-    const emailTextField = 'body > div > astro-island > div > div > form > input:nth-child(3)'
-    cy.get(emailTextField).type('johndoe@dinosdonuts.com')
-
-    const streetTextField = 'body > div > astro-island > div > div > form > input:nth-child(4)'
-    cy.get(streetTextField).type('123 Fairy Street')
-
-    const cityTextField = 'body > div > astro-island > div > div > form > input:nth-child(5)'
-    cy.get(cityTextField).type('London')
-
-    const postcodeTextField = 'body > div > astro-island > div > div > form > input:nth-child(6)'
-    cy.get(postcodeTextField).type('E1 4NS')
+    cy.fillCheckoutForm('John', 'Single-Donut', 'johndoe@dinosdonuts.com', '123 Fairy Street', 'London', 'E1 4NS')
 
     const payNowButton = 'body > div > astro-island > div > div > button'
     cy.get(payNowButton).should('contain.text', "Pay Now")
@@ -60,23 +44,7 @@ describe('Purchasing donut(s)', () => {
     const checkoutButton = 'body > div > astro-island > div > div > a'
     cy.get(checkoutButton).click()
 
-    const firstNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(1)'
-    cy.get(firstNameTextField).type('John') 
-
-    const lastNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(2)'
-    cy.get(lastNameTextField).type('Doe')
-
-    const emailTextField = 'body > div > astro-island > div > div > form > input:nth-child(3)'
-    cy.get(emailTextField).type('johndoe@dinosdonuts.com')
-
-    const streetTextField = 'body > div > astro-island > div > div > form > input:nth-child(4)'
-    cy.get(streetTextField).type('123 Fairy Street')
-
-    const cityTextField = 'body > div > astro-island > div > div > form > input:nth-child(5)'
-    cy.get(cityTextField).type('London')
-
-    const postcodeTextField = 'body > div > astro-island > div > div > form > input:nth-child(6)'
-    cy.get(postcodeTextField).type('E1 4NS')
+    cy.fillCheckoutForm('John', 'Family-Box', 'johndoe@dinosdonuts.com', '123 Fairy Street', 'London', 'E1 4NS')
 
     const payNowButton = 'body > div > astro-island > div > div > button'
     cy.get(payNowButton).should('contain.text', "Pay Now")
@@ -119,23 +87,7 @@ describe('Purchasing donut(s)', () => {
     const checkoutButton = 'body > div > astro-island > div > div > a'
     cy.get(checkoutButton).click()
 
-    const firstNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(1)'
-    cy.get(firstNameTextField).type('John') 
-
-    const lastNameTextField = 'body > div > astro-island > div > div > form > input:nth-child(2)'
-    cy.get(lastNameTextField).type('Doe')
-
-    const emailTextField = 'body > div > astro-island > div > div > form > input:nth-child(3)'
-    cy.get(emailTextField).type('johndoe@dinosdonuts.com')
-
-    const streetTextField = 'body > div > astro-island > div > div > form > input:nth-child(4)'
-    cy.get(streetTextField).type('123 Fairy Street')
-
-    const cityTextField = 'body > div > astro-island > div > div > form > input:nth-child(5)'
-    cy.get(cityTextField).type('London')
-
-    const postcodeTextField = 'body > div > astro-island > div > div > form > input:nth-child(6)'
-    cy.get(postcodeTextField).type('E1 4NS')
+    cy.fillCheckoutForm('John', 'Multiple-Single', 'johndoe@dinosdonuts.com', '123 Fairy Street', 'London', 'E1 4NS')
 
     const payNowButton = 'body > div > astro-island > div > div > button'
     cy.get(payNowButton).should('contain.text', "Pay Now")
