@@ -51,5 +51,28 @@ describe('Triple Truble Family Box page', () => {
       cy.get('div:nth-child(7) > p:nth-child(1)').should('contain.text', "Protein")
       cy.get('div:nth-child(7) > p:nth-child(2)').should('contain.text', "2.4 g")
     })
+
+    const relatedDonutsSection = '.items-start'
+
+    cy.get(relatedDonutsSection).within(() => {
+      cy.get('a').should('have.length', 3)
+
+      cy.get('a:nth-child(1) > h2').should('contain.text', "Strawberry blast")
+      cy.get('a:nth-child(1) > div > div:nth-child(1) > div:nth-child(1)').should('contain.text', "Limited edition")
+      cy.get('a:nth-child(1) > div > div:nth-child(1) > div:nth-child(2)').should('contain.text', "Glazed")
+      cy.get('a:nth-child(1) > div > div:nth-child(2) ').should('contain.text', "$6")
+      cy.get('a:nth-child(1) > figure > picture > img').should('have.attr', 'src', 'https://media.crystallize.com/dounot/23/10/1/2/strawberry_blast.png')
+
+      cy.get('a:nth-child(2) > h2').should('contain.text', "Creamy Nonsense")
+      cy.get('a:nth-child(2) > div > div:nth-child(1) > div:nth-child(1)').should('contain.text', "New")
+      cy.get('a:nth-child(2) > div > div:nth-child(1) > div:nth-child(2)').should('contain.text', "Glazed")
+      cy.get('a:nth-child(2) > div > div:nth-child(2) ').should('contain.text', "$8")
+      cy.get('a:nth-child(2) > figure > picture > img').should('have.attr', 'src', 'https://media.crystallize.com/dounot/23/10/1/4/creamy_nonsense.png')
+
+      cy.get('a:nth-child(3) > h2').should('contain.text', "Chocolate Dream")
+      cy.get('a:nth-child(3) > div > div:nth-child(1) > div:nth-child(1)').should('contain.text', "New")
+      cy.get('a:nth-child(3) > div > div:nth-child(2) ').should('contain.text', "$8")
+      cy.get('a:nth-child(3) > figure > picture > img').should('have.attr', 'src', 'https://media.crystallize.com/dounot/23/10/1/3/chocolate_dream.png')
+    })
   })
 })
