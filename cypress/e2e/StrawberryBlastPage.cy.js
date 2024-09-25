@@ -19,6 +19,24 @@ describe('Strawberry Blast page spec', () => {
     const totalPriceText = 'body > div > astro-island > div:nth-child(2) > div > p:nth-child(2)'
     cy.get(totalPriceText).should('contain.text', "$6.00")
 
+    const donutSizeButtons = 'body > div > astro-island > div > div > div:nth-child(1) > div:nth-child(1) > div'
+    
+    cy.get(donutSizeButtons).within(() => {
+      cy.get('button:nth-child(1)').should('have.attr', 'style', 'border:3px solid #373567')
+      cy.get('button:nth-child(2)').should('have.attr', 'style', 'border:3px solid transparent')
+      cy.get('button:nth-child(3)').should('have.attr', 'style', 'border:3px solid transparent')
+
+      cy.get('button:nth-child(2)').click()
+      cy.get('button:nth-child(1)').should('have.attr', 'style', 'border: 3px solid transparent;')
+      cy.get('button:nth-child(2)').should('have.attr', 'style', 'border: 3px solid rgb(55, 53, 103);')
+      cy.get('button:nth-child(3)').should('have.attr', 'style', 'border:3px solid transparent')
+
+      cy.get('button:nth-child(3)').click()
+      cy.get('button:nth-child(1)').should('have.attr', 'style', 'border: 3px solid transparent;')
+      cy.get('button:nth-child(2)').should('have.attr', 'style', 'border: 3px solid transparent;')
+      cy.get('button:nth-child(3)').should('have.attr', 'style', 'border: 3px solid rgb(55, 53, 103);')
+    })
+
     const mainImage = 'body > div > astro-island > div > figure > picture > img'
     cy.get(mainImage).should('have.attr', 'src', 'https://media.crystallize.com/dounot/23/10/1/2/strawberry_blast.png')
 
