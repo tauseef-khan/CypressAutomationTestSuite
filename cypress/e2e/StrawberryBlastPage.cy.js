@@ -1,47 +1,70 @@
 describe('Strawberry Blast page spec', () => {
   
-  it('Assert text elements', () => {
-    cy.visit('/')
-    
-    const strawberryBlastLink = 'body > div > div:nth-child(1) > div > div:nth-child(4) > a > div > h2'
-    cy.get(strawberryBlastLink).should('contains.text', "Strawberry blast")
-    cy.get(strawberryBlastLink).click()
+  beforeEach(() => {
+
+    cy.visit('/shop/strawberry-blast')
+  })
+
+  it('Assert page title and summary', () => {
 
     const pageTitleHeading = 'body > div > astro-island > div > div > h1'
     cy.get(pageTitleHeading).should('contains.text', "Strawberry blast")
 
     const pageTitleSummary = 'body > div > astro-island > div:nth-child(1) > div:nth-child(1) > p'
     cy.get(pageTitleSummary).should('contains.text', "Our Strawberry Blast donut is dipped in strawberry icing and topped with festive rainbow sprinkles!!!")
+  })
+
+  it('Assert default price', () => {
 
     const totalPriceLabel = 'body > div > astro-island > div:nth-child(2) > div > p:nth-child(1)'
     cy.get(totalPriceLabel).should('contain.text', "Total price")
 
     const totalPriceText = 'body > div > astro-island > div:nth-child(2) > div > p:nth-child(2)'
     cy.get(totalPriceText).should('contain.text', "$6.00")
+  })
 
-    const donutSizeButtons = 'body > div > astro-island > div > div > div:nth-child(1) > div:nth-child(1) > div'
+  it('Assert donut size button group', () => {
+
+    const donutSizeButtonGroup = 'body > div > astro-island > div > div > div:nth-child(1) > div:nth-child(1) > div'
+    const totalPriceText = 'body > div > astro-island > div:nth-child(2) > div > p:nth-child(2)'
     
-    cy.get(donutSizeButtons).within(() => {
+    cy.get(donutSizeButtonGroup).within(() => {
       cy.get('button:nth-child(1)').should('have.attr', 'style', 'border:3px solid #373567')
       cy.get('button:nth-child(2)').should('have.attr', 'style', 'border:3px solid transparent')
       cy.get('button:nth-child(3)').should('have.attr', 'style', 'border:3px solid transparent')
+    })
+    
+    cy.get(totalPriceText).should('contain.text', "$6.00")
 
+    cy.get(donutSizeButtonGroup).within(() => {
       cy.get('button:nth-child(2)').click()
       cy.get('button:nth-child(1)').should('have.attr', 'style', 'border: 3px solid transparent;')
       cy.get('button:nth-child(2)').should('have.attr', 'style', 'border: 3px solid rgb(55, 53, 103);')
       cy.get('button:nth-child(3)').should('have.attr', 'style', 'border:3px solid transparent')
+    })
 
+    cy.get(totalPriceText).should('contain.text', "$8.00")
+
+    cy.get(donutSizeButtonGroup).within(() => {
       cy.get('button:nth-child(3)').click()
       cy.get('button:nth-child(1)').should('have.attr', 'style', 'border: 3px solid transparent;')
       cy.get('button:nth-child(2)').should('have.attr', 'style', 'border: 3px solid transparent;')
       cy.get('button:nth-child(3)').should('have.attr', 'style', 'border: 3px solid rgb(55, 53, 103);')
     })
 
+    cy.get(totalPriceText).should('contain.text', "$8.00")
+  })
+
+  it('Assert image source links', () => {
+
     const mainImage = 'body > div > astro-island > div > figure > picture > img'
     cy.get(mainImage).should('have.attr', 'src', 'https://media.crystallize.com/dounot/23/10/1/2/strawberry_blast.png')
 
     const additionalImage = 'body > div > astro-island > div > div:nth-child(3) > div > figure > picture > img'
     cy.get(additionalImage).should('have.attr', 'src', 'https://media.crystallize.com/dounot/22/12/2/2/@100/donuts.png')
+  })
+
+  it('Assert nutritional information table', () => {
 
     const nutritionalInfoTable = 'body > div > astro-island > div > div:nth-child(4) > div:nth-child(2)'
     
@@ -69,7 +92,11 @@ describe('Strawberry Blast page spec', () => {
       cy.get('div:nth-child(7) > p:nth-child(1)').should('contain.text', "Protein")
       cy.get('div:nth-child(7) > p:nth-child(2)').should('contain.text', "2.4 g")
     })
+  })
 
+  it('Assert related donuts section', () => {
+    cy.visit('/shop/strawberry-blast')
+    
     const relatedDonutsSection = '.items-start'
 
     cy.get(relatedDonutsSection).within(() => {
