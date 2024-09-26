@@ -55,6 +55,39 @@ describe('Strawberry Blast page spec', () => {
     cy.get(totalPriceText).should('contain.text', "$8.00")
   })
 
+  it('Assert box size group', () => {
+
+    const boxSizeButtonGroup = 'body > div > astro-island > div > div > div > div:nth-child(3) > div'
+    const totalPriceText = 'body > div > astro-island > div:nth-child(2) > div > p:nth-child(2)'
+
+    cy.get(boxSizeButtonGroup).within(() => {
+      cy.get('button:nth-child(1)').should('have.attr', 'style', 'border:3px solid #373567')
+      cy.get('button:nth-child(2)').should('have.attr', 'style', 'border:3px solid transparent')
+      cy.get('button:nth-child(3)').should('have.attr', 'style', 'border:3px solid transparent')
+    })
+    
+    cy.get(totalPriceText).should('contain.text', "$6.00")
+
+    cy.get(boxSizeButtonGroup).within(() => {
+      cy.get('button:nth-child(2)').click()
+      cy.get('button:nth-child(1)').should('have.attr', 'style', 'border: 3px solid transparent;')
+      cy.get('button:nth-child(2)').should('have.attr', 'style', 'border: 3px solid rgb(55, 53, 103);')
+      cy.get('button:nth-child(3)').should('have.attr', 'style', 'border:3px solid transparent')
+    })
+
+    cy.get(totalPriceText).should('contain.text', "$16.00")
+
+    cy.get(boxSizeButtonGroup).within(() => {
+      cy.get('button:nth-child(3)').click()
+      cy.get('button:nth-child(1)').should('have.attr', 'style', 'border: 3px solid transparent;')
+      cy.get('button:nth-child(2)').should('have.attr', 'style', 'border: 3px solid transparent;')
+      cy.get('button:nth-child(3)').should('have.attr', 'style', 'border: 3px solid rgb(55, 53, 103);')
+    })
+
+    cy.get(totalPriceText).should('contain.text', "$28.00")
+
+  })
+
   it('Assert image source links', () => {
 
     const mainImage = 'body > div > astro-island > div > figure > picture > img'
