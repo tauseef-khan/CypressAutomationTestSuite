@@ -128,7 +128,6 @@ describe('Strawberry Blast page spec', () => {
   })
 
   it('Assert related donuts section', () => {
-    cy.visit('/shop/strawberry-blast')
     
     const relatedDonutsSection = '.items-start'
 
