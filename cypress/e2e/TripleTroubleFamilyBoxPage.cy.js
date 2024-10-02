@@ -1,7 +1,6 @@
 describe('Triple Trouble Family Box page', () => {
   
   beforeEach(() => {
-
     cy.visit('/shop/triple-trouble-family-box')
   })
 

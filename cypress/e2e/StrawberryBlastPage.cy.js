@@ -1,7 +1,6 @@
 describe('Strawberry Blast page spec', () => {
   
   beforeEach(() => {
-
     cy.visit('/shop/strawberry-blast')
   })
 
