@@ -21,4 +21,41 @@ describe('Home page', () => {
       cy.get('.crystallize-grid__cell:nth-child(8)').should('have.attr', 'style', 'grid-column:span 1;grid-row:span 1')
     })
   })
+
+  it('Assert donut names and prices', () => {
+    
+    const gridLayout = '.crystallize-grid--css-grid'
+
+    cy.get(gridLayout).within(() => {
+     
+      const donutOne = '.crystallize-grid__cell:nth-child(1) > a > div > div'
+
+      cy.get(donutOne).within(() => {
+        cy.get('h2').should('contain.text', "Triple Trouble Family Box")
+        cy.get('p').should('contain.text', "$19")
+      })
+
+      const donutTwo = '.crystallize-grid__cell:nth-child(2) > a > div'
+
+      cy.get(donutTwo).within(() => {
+        cy.get('h2').should('contain.text', "Mixed Delight")
+        cy.get('div > p').should('contain.text', "$2")
+      })
+
+      const donutThree = '.crystallize-grid__cell:nth-child(3) > a > div'
+
+      cy.get(donutThree).within(() => {
+        cy.get('h2').should('contain.text', "Chocolate Dream")
+        cy.get('div > p').should('contain.text', "$8")
+      })
+
+      const donutFour = '.crystallize-grid__cell:nth-child(4) > a > div'
+
+      cy.get(donutFour).within(() => {
+        cy.get('h2').should('contain.text', "Strawberry blast")
+        cy.get('div > p').should('contain.text', "$6")
+      })
+    })
+  })
+
 })
