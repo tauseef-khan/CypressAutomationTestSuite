@@ -55,6 +55,34 @@ describe('Home page', () => {
         cy.get('h2').should('contain.text', "Strawberry blast")
         cy.get('div > p').should('contain.text', "$6")
       })
+
+      const donutFive = '.crystallize-grid__cell:nth-child(5) > a > div'
+
+      cy.get(donutFive).within(() => {
+        cy.get('h2').should('contain.text', "Strawberry Massacre")
+        cy.get('div > p').should('contain.text', "$1")
+      })
+
+      const donutSix = '.crystallize-grid__cell:nth-child(6) > a > div'
+
+      cy.get(donutSix).within(() => {
+        cy.get('h2').should('contain.text', "Strawberry blast")
+        cy.get('div > p').should('contain.text', "$6")
+      })
+
+      const donutSeven = '.crystallize-grid__cell:nth-child(7) > a > div'
+
+      cy.get(donutSeven).within(() => {
+        cy.get('h2').should('contain.text', "Mixed Delight")
+        cy.get('div > p').should('contain.text', "$2")
+      })
+
+      const donutEight = '.crystallize-grid__cell:nth-child(8) > a > div'
+
+      cy.get(donutEight).within(() => {
+        cy.get('h2').should('contain.text', "Chocolate Dream")
+        cy.get('div > p').should('contain.text', "$8")
+      })
     })
   })
 
